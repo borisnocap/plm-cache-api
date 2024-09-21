@@ -23,63 +23,22 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings("unused")
 public interface CacheAPI {
 
-    /**
-     * Чтобы избежать коллизии ключей между разными плагинами, необходимо при инициализации плагинов, которые будут
-     * выполнять запись кэша, вызывать метод регистрации ключа.
-     * @throws IllegalArgumentException в случае, если такой ключ для кэша сервера уже зарегистрирован.
-     */
-    void registerServerCacheKey(final @NotNull Plugin plugin, final @NotNull String key);
+    void registerServerCacheKey(@NotNull Plugin plugin, @NotNull String key);
 
-    /**
-     * Чтобы избежать коллизии ключей между разными плагинами, необходимо при инициализации плагинов, которые будут
-     * выполнять запись кэша, вызывать метод регистрации ключа.
-     * @throws IllegalArgumentException в случае, если такой ключ для кэша игрока уже зарегистрирован.
-     */
-    void registerPlayerCacheKey(final @NotNull Plugin plugin, final @NotNull String key);
+    void registerPlayerCacheKey(@NotNull Plugin plugin, @NotNull String key);
 
-    /**
-     * Получить значение кэша игрока по указанному ключу.
-     * @param playerName никнейм игрока с учетом регистра.
-     * @param key ключ кэша.
-     */
     @Nullable
-    Object getPlayerCache(final @NotNull String playerName, final @NotNull String key);
+    Object getPlayerCache(@NotNull String playerName, @NotNull String key);
 
-    /**
-     * Получить значение кэша игрока по указанному ключу.
-     * @param player онлайн игрок.
-     * @param key ключ кэша.
-     */
     @Nullable
-    Object getPlayerCache(final @NotNull Player player, final @NotNull String key);
+    Object getPlayerCache(@NotNull Player player, @NotNull String key);
 
-    /**
-     * Установить значение кэша игрока по указанному ключу.
-     * @param playerName никнейм игрока с учетом регистра.
-     * @param key ключ кэша.
-     * @param value новое значение кэша.
-     */
-    void setPlayerCache(final @NotNull String playerName, final @NotNull String key, final @Nullable Object value);
+    void setPlayerCache(@NotNull String playerName, @NotNull String key, @Nullable Object value);
 
-    /**
-     * Установить значение кэша игрока по указанному ключу.
-     * @param player онлайн игрок.
-     * @param key ключ кэша.
-     * @param value новое значение кэша.
-     */
-    void setPlayerCache(final @NotNull Player player, final @NotNull String key, final @Nullable Object value);
+    void setPlayerCache(@NotNull Player player, @NotNull String key, @Nullable Object value);
 
-    /**
-     * Получить значение кэша сервера по указанному ключу.
-     * @param key ключ кэша.
-     */
     @Nullable
-    Object getServerCache(final @NotNull String key);
+    Object getServerCache(@NotNull String key);
 
-    /**
-     * Установить значение кэша сервера по указанному ключу.
-     * @param key ключ кэша.
-     * @param value новое значение кэша.
-     */
-    void setServerCache(final @NotNull String key, final @Nullable Object value);
+    void setServerCache(@NotNull String key, @Nullable Object value);
 }
