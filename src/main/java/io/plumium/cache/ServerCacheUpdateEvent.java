@@ -11,13 +11,14 @@ public class ServerCacheUpdateEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
     private final String key;
-    private final Object value;
-    private boolean handled;
+    private final Object oldValue;
+    private final Object newValue;
 
-    public ServerCacheUpdateEvent(final @NotNull String key, final @Nullable Object value) {
+    public ServerCacheUpdateEvent(@NotNull String key, @Nullable Object oldValue, @Nullable Object newValue) {
         super();
         this.key = key;
-        this.value = value;
+        this.oldValue = oldValue;
+        this.newValue = newValue;
     }
 
     @NotNull
@@ -36,15 +37,12 @@ public class ServerCacheUpdateEvent extends Event {
     }
 
     @Nullable
-    public Object getValue() {
-        return value;
+    public Object getOldValue() {
+        return oldValue;
     }
 
-    public void markAsHandled() {
-        handled = true;
-    }
-
-    public boolean isHandled() {
-        return handled;
+    @Nullable
+    public Object getNewValue() {
+        return newValue;
     }
 }

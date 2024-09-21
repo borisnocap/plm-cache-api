@@ -12,14 +12,15 @@ public class PlayerCacheUpdateEvent extends Event {
 
     private final String playerName;
     private final String key;
-    private final Object value;
-    private boolean handled;
+    private final Object oldValue;
+    private final Object newValue;
 
-    public PlayerCacheUpdateEvent(final @NotNull String playerName, final @NotNull String key, @Nullable final Object value) {
+    public PlayerCacheUpdateEvent(@NotNull String playerName, @NotNull String key, @Nullable Object oldValue, @Nullable Object newValue) {
         super();
         this.playerName = playerName;
         this.key = key;
-        this.value = value;
+        this.oldValue = oldValue;
+        this.newValue = newValue;
     }
 
     @NotNull
@@ -43,15 +44,12 @@ public class PlayerCacheUpdateEvent extends Event {
     }
 
     @Nullable
-    public Object getValue() {
-        return value;
+    public Object getOldValue() {
+        return oldValue;
     }
 
-    public void markAsHandled() {
-        handled = true;
-    }
-
-    public boolean isHandled() {
-        return handled;
+    @Nullable
+    public Object getNewValue() {
+        return newValue;
     }
 }
